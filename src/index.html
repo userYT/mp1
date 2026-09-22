@@ -4,10 +4,105 @@
         <meta charset="utf-8" />
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>MP1</title>
+        <title>Wanderlog</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     </head>
     <body>
-        <h1>Hello World! Welcome to MP1!</h1>
-        <img src="assets/image.jpg">
+        <!-- Req #2 Sticky Navbar / #3 Position Indicator / #4 Navbar Resizing -->
+        <nav class="navbar" id="navbar">
+            <div class="navbar__brand">Wanderlog</div>
+            <ul class="navbar__links">
+                <li><a href="#dashboard" class="navbar__link" data-section="dashboard">Dashboard</a></li>
+                <li><a href="#about" class="navbar__link" data-section="about">A Glimpse</a></li>
+                <li><a href="#travelogue" class="navbar__link" data-section="travelogue">Travelogue</a></li>
+            </ul>
+        </nav>
+
+        <!-- Req #1 header stripe / #10 fixed background image -->
+        <header class="hero" id="home">
+            <h1 class="hero__title">Wanderlog</h1>
+            <p class="hero__subtitle">Stories from the road</p>
+        </header>
+
+        <!-- Req #7 multi-column layout / #8 vertical centering / #15 vector icons -->
+        <section class="dashboard" id="dashboard">
+            <h2 class="section-title">Dashboard</h2>
+            <div class="dashboard__stats">
+                <div class="stat-card">
+                    <i class="fa-solid fa-earth-americas stat-card__icon"></i>
+                    <span class="stat-card__number">6</span>
+                    <span class="stat-card__label">Countries</span>
+                </div>
+                <div class="stat-card">
+                    <i class="fa-solid fa-plane stat-card__icon"></i>
+                    <span class="stat-card__number">44</span>
+                    <span class="stat-card__label">Trips</span>
+                </div>
+                <div class="stat-card">
+                    <i class="fa-solid fa-camera stat-card__icon"></i>
+                    <span class="stat-card__number">1200</span>
+                    <span class="stat-card__label">Photos</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Req #12 video / #14 CSS3 animation -->
+        <section class="about" id="about">
+            <h2 class="section-title">A Glimpse</h2>
+            <div class="about__content">
+                <video class="about__video" controls>
+                    <source src="assets/video-project.mp4" type="video/mp4">
+                </video>
+                <p class="about__text fade-in">This video was taken on Nusa Penida, Indonesia. I went there when I was 21. (Video credit: YouTube @lostleblanc)</p>
+                <p class="about__text fade-in">I'm a second-year ECE Master's student at UIUC, about to graduate. My dream is to keep going to new places, gaining new experiences, and meeting new cultures and people along the way.</p>
+            </div>
+        </section>
+
+        <!-- Req #6 carousel / #11 modal -->
+        <section class="travelogue" id="travelogue">
+            <h2 class="section-title">Travelogue</h2>
+            <div class="carousel" id="carousel">
+                <button class="carousel__arrow carousel__arrow--prev" id="carouselPrev" aria-label="Previous slide">&#10094;</button>
+                <div class="carousel__track" id="carouselTrack">
+                    <div class="carousel__slide carousel__slide--1 is-active" data-modal-target="trip-1"></div>
+                    <div class="carousel__slide carousel__slide--2" data-modal-target="trip-2"></div>
+                    <div class="carousel__slide carousel__slide--3" data-modal-target="trip-3"></div>
+                </div>
+                <button class="carousel__arrow carousel__arrow--next" id="carouselNext" aria-label="Next slide">&#10095;</button>
+            </div>
+        </section>
+
+        <!-- Modal windows (Req #11), one per trip -->
+        <div class="modal" id="trip-1">
+            <div class="modal__content">
+                <button class="modal__close" data-modal-close>&times;</button>
+                <h3>Trip 1 Details</h3>
+                <p>Write trip details here.</p>
+            </div>
+        </div>
+        <div class="modal" id="trip-2">
+            <div class="modal__content">
+                <button class="modal__close" data-modal-close>&times;</button>
+                <h3>Trip 2 Details</h3>
+                <p>Write trip details here.</p>
+            </div>
+        </div>
+        <div class="modal" id="trip-3">
+            <div class="modal__content">
+                <button class="modal__close" data-modal-close>&times;</button>
+                <h3>Trip 3 Details</h3>
+                <p>Write trip details here.</p>
+            </div>
+        </div>
+
+        <!-- Req #16 social media icons -->
+        <footer class="footer">
+            <div class="footer__socials">
+                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            </div>
+            <p class="footer__text">&copy; 2026 Wanderlog</p>
+        </footer>
     </body>
 </html>

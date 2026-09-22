@@ -1,1 +1,354 @@
-/* Your SCSS here. */
+// -----------------------------
+// Variables
+// -----------------------------
+$color-bg: #ffffff;
+$color-text: #4a5943;
+$color-primary: #6b7c5e;
+$color-accent: #c9a227;
+$color-secondary: #b5ead7;
+$color-yellow: #f2e2a8;
+
+$navbar-height-large: 90px;
+$navbar-height-small: 56px;
+
+$breakpoint-tablet: 1024px;
+$breakpoint-mobile: 768px;
+
+// -----------------------------
+// Mixins
+// -----------------------------
+@mixin center-absolute {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin flex-center($direction: row) {
+    display: flex;
+    flex-direction: $direction;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin respond($breakpoint) {
+    @media (max-width: $breakpoint) {
+        @content;
+    }
+}
+
+// -----------------------------
+// Base
+// -----------------------------
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    color: $color-text;
+    background: $color-bg;
+    scroll-behavior: smooth;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+// -----------------------------
+// Navbar (Req #2, #3, #4)
+// -----------------------------
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: $navbar-height-large;
+    z-index: 1000;
+    background: rgba(#ffffff, 0.95);
+    color: $color-text;
+    box-shadow: 0 1px 6px rgba($color-text, 0.08);
+    transition: height 0.3s ease, font-size 0.3s ease;
+    @include flex-center;
+    justify-content: space-between;
+    padding: 0 2rem;
+
+    &.is-scrolled {
+        height: $navbar-height-small;
+        font-size: 0.9rem;
+    }
+
+    &__brand {
+        font-weight: bold;
+        font-size: 1.4rem;
+        color: $color-primary;
+    }
+
+    &__links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+    }
+
+    &__link {
+        color: $color-text;
+        text-decoration: none;
+        padding-bottom: 4px;
+        border-bottom: 2px solid transparent;
+        transition: border-color 0.2s ease, color 0.2s ease;
+
+        &.is-active {
+            color: $color-accent;
+            border-color: $color-accent;
+        }
+    }
+}
+
+// -----------------------------
+// Hero header (Req #1, #10)
+// -----------------------------
+.hero {
+    height: 100vh;
+    width: 100%;
+    background: linear-gradient(rgba($color-text, 0.45), rgba($color-primary, 0.45)),
+        url("../assets/hero.JPG") center center / cover no-repeat fixed;
+    @include flex-center(column);
+    color: white;
+    text-align: center;
+
+    &__title {
+        font-size: 3rem;
+        text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+    }
+
+    &__subtitle {
+        margin-top: 1rem;
+        font-size: 1.2rem;
+        text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+    }
+}
+
+// -----------------------------
+// Dashboard (Req #7, #8, #15)
+// -----------------------------
+.dashboard {
+    width: 100%;
+    padding: 5rem 2rem;
+
+    &__stats {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+
+        @include respond($breakpoint-mobile) {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+}
+
+.stat-card {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    @include flex-center(column);
+    background: lighten($color-yellow, 15%);
+    border: 1px solid rgba($color-primary, 0.2);
+    border-radius: 8px;
+
+    &__icon {
+        font-size: 2rem;
+        color: $color-accent;
+        margin-bottom: 0.5rem;
+    }
+
+    &__number {
+        font-size: 2rem;
+        font-weight: bold;
+    }
+}
+
+// -----------------------------
+// About (Req #12, #14)
+// -----------------------------
+.about {
+    width: 100%;
+    padding: 5rem 2rem;
+    background: lighten($color-secondary, 20%);
+
+    &__content {
+        max-width: 900px;
+        margin: 0 auto;
+        @include flex-center(column);
+        gap: 2rem;
+    }
+
+    &__video {
+        width: 100%;
+        max-width: 640px;
+    }
+
+    &__text {
+        width: 100%;
+        text-align: justify;
+    }
+}
+
+// Req #14 CSS3 animation
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1.2s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+// -----------------------------
+// Travelogue / Carousel (Req #6, #11)
+// -----------------------------
+.travelogue {
+    width: 100%;
+    padding: 5rem 2rem;
+}
+
+.carousel {
+    position: relative;
+    max-width: 800px;
+    height: 400px;
+    margin: 0 auto;
+    overflow: hidden;
+
+    &__track {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    &__slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        background: $color-primary center center / cover no-repeat;
+        cursor: pointer;
+
+        &.is-active {
+            opacity: 1;
+        }
+
+        &--1 {
+            background-image: url("../assets/slide1.JPG");
+        }
+
+        &--2 {
+            background-image: url("../assets/slide2.JPG");
+        }
+
+        &--3 {
+            background-image: url("../assets/slide3.JPG");
+        }
+    }
+
+    &__arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 10;
+        background: rgba(0, 0, 0, 0.4);
+        color: white;
+        border: none;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+
+        &--prev {
+            left: 10px;
+        }
+
+        &--next {
+            right: 10px;
+        }
+    }
+}
+
+// -----------------------------
+// Modal (Req #11)
+// -----------------------------
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+
+    &.is-open {
+        display: flex;
+    }
+
+    &__content {
+        position: relative;
+        background: $color-bg;
+        padding: 2rem;
+        border-radius: 16px;
+        max-width: 500px;
+        width: 90%;
+        box-shadow: 0 8px 24px rgba($color-primary, 0.25);
+    }
+
+    &__close {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.75rem;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+}
+
+// -----------------------------
+// Footer (Req #1, #16)
+// -----------------------------
+.footer {
+    width: 100%;
+    padding: 3rem 2rem;
+    background: $color-primary;
+    color: white;
+    text-align: center;
+
+    &__socials {
+        @include flex-center;
+        gap: 1.5rem;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+
+        a {
+            color: white;
+            transition: color 0.2s ease;
+
+            &:hover {
+                color: $color-accent;
+            }
+        }
+    }
+}
