@@ -53,6 +53,18 @@ navLinks.forEach((link) => {
     });
 });
 
+// Req #14: Trigger the fade-in animation when its section scrolls into view
+const fadeElements = document.querySelectorAll('.fade-in');
+const fadeObserver = new IntersectionObserver(
+    (entries) => {
+        entries.forEach((entry) => {
+            entry.target.classList.toggle('is-visible', entry.isIntersecting);
+        });
+    },
+    { threshold: 0.3 }
+);
+fadeElements.forEach((el) => fadeObserver.observe(el));
+
 // Req #6: Carousel
 const carouselSlides = document.querySelectorAll('.carousel__slide');
 let currentSlide = 0;
@@ -73,9 +85,9 @@ document.getElementById('carouselNext').addEventListener('click', () => {
 });
 
 // Req #11: Modal
-carouselSlides.forEach((slide) => {
-    slide.addEventListener('click', () => {
-        const modal = document.getElementById(slide.dataset.modalTarget);
+document.querySelectorAll('.carousel__caption-btn').forEach((button) => {
+    button.addEventListener('click', () => {
+        const modal = document.getElementById(button.dataset.modalTarget);
         if (modal) {
             modal.classList.add('is-open');
         }

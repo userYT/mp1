@@ -58,15 +58,42 @@
             </div>
         </section>
 
-        <!-- Req #6 carousel / #11 modal -->
+        <!-- Req #6 carousel / #11 modal / #14 CSS3 animation -->
         <section class="travelogue" id="travelogue">
             <h2 class="section-title">Travelogue</h2>
             <div class="carousel" id="carousel">
                 <button class="carousel__arrow carousel__arrow--prev" id="carouselPrev" aria-label="Previous slide">&#10094;</button>
                 <div class="carousel__track" id="carouselTrack">
-                    <div class="carousel__slide carousel__slide--1 is-active" data-modal-target="trip-1"></div>
-                    <div class="carousel__slide carousel__slide--2" data-modal-target="trip-2"></div>
-                    <div class="carousel__slide carousel__slide--3" data-modal-target="trip-3"></div>
+                    <div class="carousel__slide carousel__slide--1 is-active">
+                        <div class="carousel__caption">
+                            <h3 class="carousel__caption-title">Chicago, IL</h3>
+                            <p class="carousel__caption-text">The Art Institute of Chicago</p>
+                            <button class="carousel__caption-btn" data-modal-target="trip-1">
+                                <i class="fa-solid fa-circle-info"></i>
+                                <span>See trip details</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="carousel__slide carousel__slide--2">
+                        <div class="carousel__caption">
+                            <h3 class="carousel__caption-title">Anchorage, AK</h3>
+                            <p class="carousel__caption-text">Alaska Wildlife Conservation Center</p>
+                            <button class="carousel__caption-btn" data-modal-target="trip-2">
+                                <i class="fa-solid fa-circle-info"></i>
+                                <span>See trip details</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="carousel__slide carousel__slide--3">
+                        <div class="carousel__caption">
+                            <h3 class="carousel__caption-title">Mexico City, Mexico</h3>
+                            <p class="carousel__caption-text">Pyramid of the Sun</p>
+                            <button class="carousel__caption-btn" data-modal-target="trip-3">
+                                <i class="fa-solid fa-circle-info"></i>
+                                <span>See trip details</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
                 <button class="carousel__arrow carousel__arrow--next" id="carouselNext" aria-label="Next slide">&#10095;</button>
             </div>
@@ -76,22 +103,22 @@
         <div class="modal" id="trip-1">
             <div class="modal__content">
                 <button class="modal__close" data-modal-close>&times;</button>
-                <h3>Trip 1 Details</h3>
-                <p>Write trip details here.</p>
+                <h3>Chicago, IL</h3>
+                <p>The Art Institute of Chicago is home to one of the largest collections of Impressionist and Post-Impressionist paintings outside of France, including Seurat's "A Sunday on La Grande Jatte."</p>
             </div>
         </div>
         <div class="modal" id="trip-2">
             <div class="modal__content">
                 <button class="modal__close" data-modal-close>&times;</button>
-                <h3>Trip 2 Details</h3>
-                <p>Write trip details here.</p>
+                <h3>Anchorage, AK</h3>
+                <p>The Alaska Wildlife Conservation Center rehabilitates injured and orphaned animals, giving visitors a rare close-up look at moose, bears, and bald eagles native to the region.</p>
             </div>
         </div>
         <div class="modal" id="trip-3">
             <div class="modal__content">
                 <button class="modal__close" data-modal-close>&times;</button>
-                <h3>Trip 3 Details</h3>
-                <p>Write trip details here.</p>
+                <h3>Mexico City, Mexico</h3>
+                <p>The Pyramid of the Sun at Teotihuacan is one of the largest structures in pre-Columbian Mesoamerica, and climbing to the top offers a sweeping view of the ancient city grid.</p>
             </div>
         </div>
 
